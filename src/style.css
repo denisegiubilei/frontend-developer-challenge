@@ -21,6 +21,10 @@ body {
   margin: 10px;
 }
 
+.details {
+  font-size: 14px;
+}
+
 .menu-container {
   display: flex;
   flex-wrap: wrap;
@@ -40,8 +44,8 @@ body {
   padding: 0px
 }
 
-.details {
-  font-size: 14px;
+.title {
+  padding: 35px;
 }
 
 .product-section {
@@ -67,17 +71,17 @@ body {
 }
 
 .card p {
-  padding: 5px;
+  padding: 5px 0;
 }
 
 .price {
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .product-img {
-  min-width: 200px;
-  min-height: 200px;
+  height: auto;
+  width: 100%;
 }
 
 .button {
@@ -91,5 +95,6 @@ body {
 }
 
 .addtocart {
-  padding: 5px 50px;
+  padding: 6px;
+  width: 100%;
 }
