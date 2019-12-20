@@ -1,4 +1,5 @@
 const API_ENDPOINT = 'https://frontend-intern-challenge-api.iurykrieger.now.sh'
+
 const LOCALE = 'pt-BR'
 const CURRENCY = 'BRL'
 const ADDTOCART_TEXT = 'Comprar'
