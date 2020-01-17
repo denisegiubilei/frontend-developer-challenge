@@ -1,7 +1,7 @@
-const API_ENDPOINT = 'https://frontend-intern-challenge-api.iurykrieger.now.sh'
+import { products } from './services/ApiService'
 
-const LOCALE = 'pt-BR'
-const CURRENCY = 'BRL'
+import { currencyFmt } from './utils' 
+
 const ADDTOCART_TEXT = 'Comprar'
 const IMG_FALLBACK_SRC = 'https://via.placeholder.com/200x200.jpg'
 
@@ -9,29 +9,9 @@ window.onload = () => {
   populateProductList(0)
 }
 
-const fetchProducts = page => (
-  fetch(`${API_ENDPOINT}/products`, {
-    qs: {
-      page: page
-    }
-  })
-  .then(response => response.json())
-  .then(data => data && data.products)
-  .catch(err => console.error(err))
-)
-
-const priceFmt = price => price && price.toLocaleString(LOCALE, {
-  style: 'currency',
-  currency: CURRENCY
-})
-
-const hasDiscount = (oldPrice, price) => oldPrice && price && oldPrice > price
-
-const hasInstallments = installments => installments && installments.count && installments.value
-
 const populateProductList = page => {
   const productContainer = document.getElementById('products-container')
-  fetchProducts(page)
+  products(page)
     .then(products =>
       productContainer.innerHTML = products && Object.values(products).map(p =>
         `
@@ -40,7 +20,7 @@ const populateProductList = page => {
             <p>${p.name}</p>
             <p>${p.description}</p>
             <p>${hasDiscount(p.oldPrice, p.price) && 'De: ' + priceFmt(p.oldPrice)}</p>
-            <p class="price">${hasDiscount(p.oldPrice, p.price) ? 'Por: ' : ''}${priceFmt(p.price)}</p>
+            <p class="price">${hasDiscount(p.oldPrice, p.price) ? 'Por: ' : ''}${currencyFmt(p.price)}</p>
             <p>
               ${hasInstallments(p.installments) && 'ou ' + p.installments.count + 'x de ' + priceFmt(p.installments.value)}
             </p>
