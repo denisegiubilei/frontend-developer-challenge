@@ -24,4 +24,6 @@ const ProductCard = (p) => {
   )
 }
 
-export { ProductCard }
+export { 
+  ProductCard 
+}

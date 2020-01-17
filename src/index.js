@@ -3,7 +3,6 @@ import { products } from './services/api-service'
 import { ProductCard } from './components/ProductCard'
 
 const populateProductList = page => {
-  console.log('AAAAAAAAAAAAAAAAAAA')
   const container = document.getElementById('products-container')
   products(page)
     .then(products =>
