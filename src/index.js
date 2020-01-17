@@ -1,13 +1,14 @@
-import { products } from './services/ApiService'
-
+import { ADDTOCART_TEXT, IMG_FALLBACK_SRC} from './constants'
+import { products } from './services/api-service'
 import { currencyFmt } from './utils' 
 
-const ADDTOCART_TEXT = 'Comprar'
-const IMG_FALLBACK_SRC = 'https://via.placeholder.com/200x200.jpg'
+const hasDiscount = ({ oldPrice, price }) => oldPrice && price && oldPrice > price
 
-window.onload = () => {
-  populateProductList(0)
-}
+const installments = ({ installments }) => (
+  installments && installments.count && installments.value 
+    ? `ou ${installments.count}x de ${priceFmt(installments.value)}`
+    : ''
+)
 
 const populateProductList = page => {
   const productContainer = document.getElementById('products-container')
@@ -16,17 +17,17 @@ const populateProductList = page => {
       productContainer.innerHTML = products && Object.values(products).map(p =>
         `
           <div id="pid-${p.id}" class="card">
-            <img src="${p.image}" alt="${p.name}" class="product-img" onerror="this.src='${IMG_FALLBACK_SRC}'">
+            <img src="${p.image}" alt="${p.name}" onerror="this.src='${IMG_FALLBACK_SRC}'" class="product-img">
             <p>${p.name}</p>
             <p>${p.description}</p>
-            <p>${hasDiscount(p.oldPrice, p.price) && 'De: ' + priceFmt(p.oldPrice)}</p>
-            <p class="price">${hasDiscount(p.oldPrice, p.price) ? 'Por: ' : ''}${currencyFmt(p.price)}</p>
-            <p>
-              ${hasInstallments(p.installments) && 'ou ' + p.installments.count + 'x de ' + priceFmt(p.installments.value)}
-            </p>
+            <p>${hasDiscount(p) && 'De: ' + priceFmt(p.oldPrice)}</p>
+            <p class="price">${hasDiscount(p) && 'Por: '}${currencyFmt(p.price)}</p>
+            <p>${installments(p)}</p>
             <button class="addtocart button">${ADDTOCART_TEXT}</button>
           </div>
         `
       ).join('')
     )
 }
+
+window.onload = () => populateProductList(0)
