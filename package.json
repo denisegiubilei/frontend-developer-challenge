@@ -1,0 +1,27 @@
+{
+  "name": "frontend-developer-challenge",
+  "version": "1.0.0",
+  "description": "Frontend developer challenge Linx Impulse",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denisegiubilei/frontend-developer-challenge.git"
+  },
+  "author": "denise giubilei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/denisegiubilei/frontend-developer-challenge/issues"
+  },
+  "homepage": "https://github.com/denisegiubilei/frontend-developer-challenge#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}
