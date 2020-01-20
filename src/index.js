@@ -34,13 +34,16 @@ const loadNextPage = () => {
 
 const submitNewsletter = (e) => {
   e.preventDefault()
-  if (e.target.checkValidity()) {
+  const form = e.target
+  const submitBtn = form.querySelector('input[type=submit')
+  if (form.checkValidity()) {
+    submitBtn.value = "... Salvando"
     const newsletterUser = { 
-      "name": e.target.name.value, 
-      "email" : e.target.email.value 
+      "name": form.name.value, 
+      "email" : form.email.value 
     }
     addUser(newsletterUser)
-      .then(() => console.log("adicionou"))
+      .then(() => submitBtn.value = "Usuário salvo! :)")
   }
 }
 

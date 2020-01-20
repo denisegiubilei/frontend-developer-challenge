@@ -10,7 +10,11 @@ const products = page => (
 )
 
 const addUser = user => (
-  new Promise(resolve => resolve(console.log(user))) 
+  new Promise(resolve => {
+    setTimeout(() => { 
+      resolve(console.log(user))
+    }, 2000)
+  }) 
 )
 
 export {
