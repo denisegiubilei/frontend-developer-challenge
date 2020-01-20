@@ -1,5 +1,5 @@
 
-import { products } from './services/api-service'
+import { products, addUser } from './services/api-service'
 import { ProductCard } from './components/ProductCard'
 
 const queryString = window.location.search
@@ -32,8 +32,24 @@ const loadNextPage = () => {
   nextPage++
 }
 
+const submitNewsletter = (e) => {
+  e.preventDefault()
+  if (e.target.checkValidity()) {
+    const newsletterUser = { 
+      "name": e.target.name.value, 
+      "email" : e.target.email.value 
+    }
+    addUser(newsletterUser)
+      .then(() => console.log("adicionou"))
+  }
+}
+
 window.onload = () => {
+  const newsletterForm = document.getElementById('newsletter-form')
   const nextPageBtn = document.getElementById('next-page')
+
+  newsletterForm.onsubmit = (e) => submitNewsletter(e)
   nextPageBtn.onclick = () => loadNextPage()
+
   loadNextPage()
 }

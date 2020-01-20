@@ -9,6 +9,11 @@ const products = page => (
   .catch(err => console.error(err))
 )
 
+const addUser = user => (
+  new Promise(resolve => resolve(console.log(user))) 
+)
+
 export {
- products
+ products,
+ addUser
 }

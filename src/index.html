@@ -35,12 +35,12 @@
     <form id="newsletter-form">
       <div class="fields">
         <div class="field">
-          <label for="name">Nome do seu amigo:</label>
-          <input type="text" id="name" name="name" class="input"/>
+          <label for="name" >Nome do seu amigo:</label>
+          <input type="text" id="name" name="name" required min-length="2" class="input"/>
         </div>
         <div class="field">
           <label for="name">E-mail:</label>
-          <input type="text" id="email" name="email" class="input"/>
+          <input type="email" id="email" name="email" required class="input"/>
         </div>
       </div>
       <input type="submit" class="button regular" value="Enviar agora"/>
