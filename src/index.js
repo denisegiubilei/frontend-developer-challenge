@@ -6,6 +6,15 @@ const queryString = window.location.search
 const urlParams = new URLSearchParams(queryString)
 let nextPage = urlParams.get('page') || 1
 
+const updateQueryString = (key, value) => {
+  if ('URLSearchParams' in window) {
+    const searchParams = new URLSearchParams(window.location.search)
+    searchParams.set(key, value)
+    const newPath = window.location.pathname + '?' + searchParams.toString()
+    history.pushState(null, '', newPath)
+  }
+}
+
 const populateProductList = (page) => {
   const container = document.getElementById('products-container')
   products(page)
@@ -23,17 +32,8 @@ const loadNextPage = () => {
   nextPage++
 }
 
-const updateQueryString = (key, value) => {
-  if ('URLSearchParams' in window) {
-    const searchParams = new URLSearchParams(window.location.search)
-    searchParams.set(key, value)
-    const newPath = window.location.pathname + '?' + searchParams.toString()
-    history.pushState(null, '', newPath)
-  }
-}
-
 window.onload = () => {
   const nextPageBtn = document.getElementById('next-page')
-  nextPageBtn.onclick = () => loadNextPage(nextPage)
+  nextPageBtn.onclick = () => loadNextPage()
   loadNextPage()
 }
