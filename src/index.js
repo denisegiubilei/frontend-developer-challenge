@@ -27,7 +27,7 @@ const populateProductList = (page) => {
 }
 
 const loadNextPage = () => {
-  updateQueryString("page", nextPage)
+  updateQueryString('page', nextPage)
   populateProductList(nextPage)
   nextPage++
 }
@@ -37,13 +37,13 @@ const submitNewsletter = (e) => {
   const form = e.target
   const submitBtn = form.querySelector('input[type=submit')
   if (form.checkValidity()) {
-    submitBtn.value = "... Salvando"
+    submitBtn.value = '... Salvando'
     const newsletterUser = { 
-      "name": form.name.value, 
-      "email" : form.email.value 
+      'name': form.name.value, 
+      'email' : form.email.value 
     }
     addUser(newsletterUser)
-      .then(() => submitBtn.value = "Usuário salvo! :)")
+      .then(() => submitBtn.value = 'Usuário salvo! :)')
   }
 }
 
