@@ -9,6 +9,15 @@ const products = page => (
   .catch(err => console.error(err))
 )
 
+const addUser = user => (
+  new Promise(resolve => {
+    setTimeout(() => { 
+      resolve(console.log(user))
+    }, 2000)
+  }) 
+)
+
 export {
- products
+ products,
+ addUser
 }
