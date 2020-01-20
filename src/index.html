@@ -26,12 +26,31 @@
     <div id="products-container" class="container loading">
     </div>
     <div>
-        <input id="next-page" type="button" value="Ainda mais produtos aqui!"/>
+        <input class="button regular" id="next-page" type="button" value="Ainda mais produtos aqui!"/>
     </div>
   </section>
-  <section>
+  <section class="newsletter">
+    <h2 class="title">Compartilhe a novidade</h2>
+    <p class="subtitle">Quer que seus amigos também ganhem a lista personalizada deles? Preencha agora!
+    <form id="newsletter-form">
+      <div class="fields">
+        <div class="field">
+          <label for="name">Nome do seu amigo:</label>
+          <input type="text" id="name" name="name" class="input"/>
+        </div>
+        <div class="field">
+          <label for="name">E-mail:</label>
+          <input type="text" id="email" name="email" class="input"/>
+        </div>
+      </div>
+      <input type="submit" class="button regular" value="Enviar agora"/>
+    </form>
+    </p>
   </section>
-  <footer>
+  <footer class="footer">
+    <p>Testando suas habilidades em HTML, CSS e JS</p>
+    <p>Linx Impulse</p>
+    <p>2019</p>
   </footer>
 </body>
 </html>
